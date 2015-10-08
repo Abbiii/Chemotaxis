@@ -14,53 +14,85 @@
  	//Penicillin predator array
  	predator = new Penicillin[15];
  	for (int j = 0; j < 15; j++)
- 		predator[i] = new Penicillin();
+ 		predator[j] = new Penicillin();
  }   
 
  void draw()   
  {    
+ 	background(0);
  	tint(255,126);//transparent
  	//prey action
  	for (int i = 0; i < 20; i++)
  	{
- 		prey[i].
+ 		prey[i].born();
+ 		prey[i].show();
  	}
  	//predator action
  	for (int j = 0; j < 15; j++)
  	{
-
+ 		predator[j].made();
+ 		predator[j].show();
  	}
   }  
 
  class Bacteria    
- {     
+ {  
+ 	int bX, bY;   
  	boolean alive;
  	Bacteria()//constructor
  	{
+ 		bX = (int)(Math.random() * 200 + 150);
+ 		bY = (int)(Math.random() * 200 + 150);
  		alive = true;
  	}
  	void born()
  	{
+ 		//random run
+ 		bX = bX + (int)(Math.random() * 5) - 2;
+        bY = bY + (int)(Math.random() * 5) - 2;
 
  	}
  	void show()
  	{
-
+ 		if (alive == true)
+ 		{
+ 			fill(153, 255-(int)(Math.random() *200), 255-(int)(Math.random()*150));
+ 			ellipse(bX, bY, 7, 7);
+ 		}
+ 		if (get(bX +2, bY + 2) == color(255,0,0))
+ 			alive = false;
+ 		else if (keyPressed)
+ 		{
+ 			if (key == 'N'||key == 'n')
+ 			{
+ 				alive = true;
+ 			}
+ 		}
  	}
  }    
 
  class Penicillin
  {
+ 	int pX, pY;
  	Penicillin()//constructor
  	{
-
+ 		pX = 250;
+ 		pY = 250;
  	}
  	void made()
  	{
-
+		if (mouseX < pX) 
+             pX = pX + (int)(Math.random() * 5) - 3;
+        else 
+             pX = pX + (int)(Math.random() * 5) - 1;
+        if (mouseY < pY)
+             pY = pY + (int)(Math.random() * 5) - 3;
+        else
+             eY = eY + (int)(Math.random() * 5) - 1;
  	}
  	void show()
  	{
- 		
+ 		fill(255,0,0);
+ 		ellipse(pX, pY, 10,10);
  	}
  }
