@@ -20,7 +20,6 @@
  void draw()   
  {    
  	background(0);
- 	tint(255,126);//transparent
  	//prey action
  	for (int i = 0; i < 20; i++)
  	{
@@ -54,19 +53,24 @@
  	}
  	void show()
  	{
- 		if (alive == true)
- 		{
- 			fill(153, 255-(int)(Math.random() *200), 255-(int)(Math.random()*150));
- 			ellipse(bX, bY, 7, 7);
- 		}
- 		if (get(bX +2, bY + 2) == color(255,0,0))
- 			alive = false;
+ 		if (get(bX +5, bY + 5) == color(255,0,0))
+ 			{
+ 				alive = false;
+ 			}
  		else if (keyPressed)
  		{
  			if (key == 'N'||key == 'n')
  			{
  				alive = true;
  			}
+ 		}
+
+ 		if (alive == false)
+ 		{}
+ 		else 
+ 		{
+ 			fill(153, 255-(int)(Math.random() *200), 255-(int)(Math.random()*150));
+ 			ellipse(bX, bY, 7, 7);
  		}
  	}
  }    
@@ -88,7 +92,7 @@
         if (mouseY < pY)
              pY = pY + (int)(Math.random() * 5) - 3;
         else
-             eY = eY + (int)(Math.random() * 5) - 1;
+             pY = pY + (int)(Math.random() * 5) - 1;
  	}
  	void show()
  	{
